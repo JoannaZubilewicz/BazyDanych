@@ -103,21 +103,21 @@ FOREIGN KEY (ID_marki) REFERENCES [Marki] (ID_marki) ON UPDATE SET NULL ON DELET
 
   INSERT INTO Pracownicy (PESEL,imie_pracownika,nazwisko_pracownika,stanowisko_pracy)
   VALUES
-  ('87304286985','Andrzej','Chruœciel','sprzedawca'),
+  ('87304286985','Andrzej','ChruÅ›ciel','sprzedawca'),
   ('78937419923','Aleksander','Kowal','doradca'),
-  ('72653675932','£ukasz','Zagórski','dyrektor do spraw marketingu'),
-  ('29475616356','Robert','Ro¿ek','sprzedawca'),
-  ('96572522447','Kinga','Ma³ek','doradca'),
+  ('72653675932','Åukasz','ZagÃ³rski','dyrektor do spraw marketingu'),
+  ('29475616356','Robert','RoÅ¼ek','sprzedawca'),
+  ('96572522447','Kinga','MaÅ‚ek','doradca'),
   ('76264647690','Patrycja','Wirkowska','sprzedawca')
   GO
 
   INSERT INTO Klienci (nr_dowodu,imie_klienta,nazwisko_klienta)
   VALUES
-  ('DAC465726','Patrycja','Ga³uszka'),
+  ('DAC465726','Patrycja','GaÅ‚uszka'),
   ('GAK683026','Jagoda','Nowak'),
   ('CAD742345','Agnieszka','Frysak'),
   ('KUG728459','Jakub','Syk'),
-  ('GYS347592','Wiktor','Kuku³ka')
+  ('GYS347592','Wiktor','KukuÅ‚ka')
   GO
 
   INSERT INTO Zamowienia (ID_klienta,ID_pracownika ,ID_modelu,kwota_zamowienia,data_zamowienia, data_odbioru,zrealizowano, niezrealizowano)
@@ -144,7 +144,7 @@ FOREIGN KEY (ID_marki) REFERENCES [Marki] (ID_marki) ON UPDATE SET NULL ON DELET
  GROUP BY Marki.nazwa_marki
  GO 
 
-CREATE VIEW raporty.widok2 AS 
+CREATE VIEW Raporty.view2 AS 
 SELECT Zamowienia.ID_zamowienia, cast((cena-kwota_zamowienia)/cena AS DECIMAL(9,2)) AS rabat
 FROM Zamowienia
 INNER JOIN Cennik ON Zamowienia.ID_modelu = Cennik.ID_modelu AND Zamowienia.data_zamowienia >= Cennik.data_OD AND Zamowienia.data_zamowienia < Cennik.data_DO
